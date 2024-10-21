@@ -12,7 +12,7 @@ jobs:
 
                  echo "Runner OS: $RUNNER_OS"
 
-                 echo "Runner OS: RUNNER_OS"
+                 
     windows-echo:
        runs-on: windows-latest 
        steps:
