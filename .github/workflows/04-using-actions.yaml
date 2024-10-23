@@ -9,8 +9,7 @@ jobs:
             - name: Checkout code 
               uses: actions/checkout@v4
             - name: Printing Folders
-            - name: List files
-              run: ls -l 
+              run: ls 
         # 0. Checkout the code from the repository 
         # 1. Install deps of our react application 
         # 2. Execute automated tests
