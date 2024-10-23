@@ -1,0 +1,10 @@
+name: 04-using Actions
+
+on: push 
+
+jobs: 
+    build:
+        runs-on: ubuntu-latest
+
+        # 1. Install deps of our react application 
+        # 2. Execute automated tests
