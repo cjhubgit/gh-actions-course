@@ -1,7 +1,5 @@
 name: 04-using Actions
 
-on: push 
-
 jobs: 
     build:
         runs-on: ubuntu-latest
