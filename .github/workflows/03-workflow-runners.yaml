@@ -1,7 +1,5 @@
 name: 03 - Workflows Runners
 
-on: push 
-
 jobs: 
     ubuntu-echo:
         runs-on: ubuntu-latest
