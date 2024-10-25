@@ -2,6 +2,8 @@ name: 01-Building Blocks
 
 on: workflow_dispatch 
 
+pull_request:
+
 jobs:
     echo-hello:
         runs-on: ubuntu-latest
