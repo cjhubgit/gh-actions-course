@@ -1,7 +1,6 @@
 name: 08 - Variables
 
-on: 
-  push: 
+on:  
   workflow_dispatch:
 
 env: 
