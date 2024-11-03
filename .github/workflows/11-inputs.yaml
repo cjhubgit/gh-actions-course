@@ -29,8 +29,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ !github.event.inputs['dry-run'] }}  # Changed to check for not dry-run
+    if: ${{ !github.event.inputs['dry-run'] }}  # Condition to skip if dry-run is true
     environment: ${{ github.event.inputs.target }}
+    needs: build  # Added dependency on build job
     steps:
       - name: Deploy
         run: echo "Deploying to ${{ github.event.inputs.target }}"
