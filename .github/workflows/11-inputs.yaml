@@ -29,10 +29,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs['dry-run'] == false }}
+    if: ${{ !github.event.inputs['dry-run'] }}  # Changed to check for not dry-run
     environment: ${{ github.event.inputs.target }}
     needs: build
     steps:
       - name: Deploy
         run: echo "Deploying to ${{ github.event.inputs.target }}"
-
