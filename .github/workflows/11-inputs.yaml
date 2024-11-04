@@ -28,4 +28,12 @@ jobs:
         run: echo "Building from ${{ github.event.inputs.tag }}"
 
   deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ github.event.inputs['dry-run'] == 'false' }}
+    environment: ${{ github.event.inputs.target }}
+    steps:
+      - name: Deploy
+        run: echo "Deploying to ${{ github.event.inputs.target }}"
+
    
