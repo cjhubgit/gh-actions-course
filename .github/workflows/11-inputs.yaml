@@ -1,4 +1,4 @@
-name: 11 - working with inputs
+name: 11 - Working with Inputs
 
 on: 
   workflow_dispatch: 
@@ -24,6 +24,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2  # Explicitly include a checkout step
+
       - name: Build
         run: echo "Building from ${{ github.event.inputs.tag }}"
 
@@ -33,5 +36,8 @@ jobs:
     if: ${{ github.event.inputs['dry-run'] == 'false' }}
     environment: ${{ github.event.inputs.target }}
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2  # Explicitly include a checkout step again
+
       - name: Deploy
         run: echo "Deploying to ${{ github.event.inputs.target }}"
