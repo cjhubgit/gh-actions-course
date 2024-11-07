@@ -8,6 +8,7 @@ on:
         options:
           - success
           - failure
+          - superman
         default: success 
 
 jobs:
@@ -28,7 +29,8 @@ jobs:
         run: |
           echo "Error: Simulating a build failure"
           exit 1
-
+      - name: check for success
+        if: ${{ github.event.inputs.build-status == 'superman'}}
   deploy:
     runs-on: ubuntu-latest
     needs: build
