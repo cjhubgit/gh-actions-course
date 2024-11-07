@@ -23,7 +23,10 @@ jobs:
         id: build
         run: | 
           echo "$GITHUB_OUTPUT"
-          echo "status=${{ github.event.inputs.build-status }}" >> "$GITHUB_OUTPUT" 
+          echo "status=${{ github.event.inputs.build-status }}" >> "$GITHUB_OUTPUT"
+          echo "output1=value1" >> "$GITHUB_OUTPUT" 
+          echo "output1=value1" >> "$GITHUB_OUTPUT"
+          cat "$GITHUB_OUTPUT" 
 
   deploy:  # Corrected indentation and placement
     runs-on: ubuntu-latest
