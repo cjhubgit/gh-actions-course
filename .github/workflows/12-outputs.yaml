@@ -21,13 +21,13 @@ jobs:
       
       - name: Build
         id: build
-        run: echo "status=${{ inputs.build-status }}" >> "$GITHUB_OUTPUT" 
+        run: echo "status=${{ github.event.inputs.build-status }}" >> "$GITHUB_OUTPUT" 
 
-      - name: check for Errors
-         if: ${{ github.event.inputs.build-status == 'failure' }}
-         run: | 
-           echo "Error: Simulating a build failure"
-           exit 1
+      - name: Check for Errors
+        if: ${{ github.event.inputs.build-status == 'failure' }}
+        run: |
+          echo "Error: Simulating a build failure"
+          exit 1
 
   deploy:
     runs-on: ubuntu-latest
@@ -35,4 +35,4 @@ jobs:
     if: ${{ needs.build.outputs.build-status == 'success' }}
     steps:
       - name: Deploy
-        run: echo "Deploying" 
+        run: echo "Deploying"
