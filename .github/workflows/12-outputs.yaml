@@ -26,6 +26,8 @@ jobs:
           echo "$GITHUB_OUTPUT"
           echo "status=${{ github.event.inputs.build-status }}" >> "$GITHUB_OUTPUT"
           echo "output1=value1" >> "$GITHUB_OUTPUT" 
+          cat "$GITHUB_OUTPUT"
+          echo "mistake=true" > "$GITHUB_OUTPUT"
           cat "$GITHUB_OUTPUT" 
 
   deploy:  # Corrected indentation and placement
@@ -34,6 +36,7 @@ jobs:
     if: ${{ needs.build.outputs.build-status == 'success' }}
     steps:
       - name: Deploy
+        run: echo "Deploy"
+      - name: Print Outputs
         run: |
-          echo "Deploying"
           echo "Output 1: ${{ needs.build.outputs.output1 }}"
