@@ -7,14 +7,14 @@ on:
         description: Whether to execute cache step
         type: boolean 
         default: true 
-      node-version:  # Corrected indentation
+      node-version:
         description: Node version
         type: choice
         options: 
           - 18.x
           - 20.x
           - 21.x
-        default: 20.x  # Corrected indentation
+        default: 20.x
 
 jobs:
   build:
@@ -32,7 +32,16 @@ jobs:
         with:
           node-version: ${{ inputs.node-version }}
 
+      - name: Download cached dependencies  
+        uses: actions/cache@v3  
+        if: ${{ inputs.use-cache }}
+        id: cache
+        with: 
+          path: 13-caching/react-app/node_modules
+          key: deps-node-modules-${{ hashFiles('13-caching/react-app/package-lock.json') }}
+
       - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'  # Added spaces around '!=' for consistency
         run: npm ci
 
       - name: Testing
