@@ -18,15 +18,13 @@ on:
 
 jobs:
   install-deps:
-  build:
     runs-on: ubuntu-latest
-    needs: install-deps
     defaults:
       run:
-        working-directory: 13-caching/react-app 
+        working-directory: 13-caching/react-app
     outputs:
       deps-cache-key: ${{ steps.cache-key.outputs.CACHE_KEY }}
-
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -50,15 +48,15 @@ jobs:
           key: deps-node-modules-${{ hashFiles('13-caching/react-app/package-lock.json') }}
 
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'  # Added spaces around '!=' for consistency
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
   build:
     runs-on: ubuntu-latest
-    needs: install-deps 
+    needs: install-deps
     defaults:
       run:
-        working-directory: 13-caching/react-app 
+        working-directory: 13-caching/react-app
 
     steps:
       - name: Checkout code
@@ -85,10 +83,10 @@ jobs:
 
   lint-test:
     runs-on: ubuntu-latest
-    needs: install-deps 
+    needs: install-deps
     defaults:
       run:
-        working-directory: 13-caching/react-app 
+        working-directory: 13-caching/react-app
 
     steps:
       - name: Checkout code
