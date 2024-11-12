@@ -83,7 +83,7 @@ jobs:
       - name: Linting
         run: echo "Linting..."
 
-  lint-test:  # Corrected indentation
+  lint-test:
     runs-on: ubuntu-latest
     needs: install-deps 
     defaults:
