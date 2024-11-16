@@ -38,13 +38,14 @@ jobs:
 
   include-example:
     runs-on: ubuntu-latest
-    name: ${{ matrix.colour }}-${{ matrix.shape }}-${{ matrix.size }}
+    name: ${{ matrix.colour }}-${{ matrix.shape }}-${{ matrix.size }}-${{ matrix.size}}-${{ matrix.opacity }}
     strategy:
       matrix:
         colour: [red, green]
         shape: [circle, square]
         size: [small, large]
         include:
+          - opacity: 50
           - colour: red
             shape: triangle
             size: medium
