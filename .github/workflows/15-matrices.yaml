@@ -35,3 +35,18 @@ jobs:
           sleep 10
       - name: Upload test results
         run: echo "Uploading test results"
+<<<<<<< HEAD
+=======
+
+  include-example:
+    runs-on: ubuntu-latest
+    name: ${{ matrix.colour }}-${{ matrix.shape }}-${{ matrix.size }}
+    strategy:
+      matrix:
+        colour: [red, green]
+        shape: [circle, square] 
+        size: [small, large]
+        include:
+          - colour: red
+            shape: triangle 
+>>>>>>> feat(15-matrices): add example job for include
