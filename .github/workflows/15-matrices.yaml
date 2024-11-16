@@ -26,9 +26,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Fail if experimental
-        if: matrix.tag == 'experimental'
-        run: exit 1
       - name: Perform some tests
         run: | 
           echo "Running test on OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
@@ -52,6 +49,9 @@ jobs:
             opacity: 100
           - colour: red
             shape: triangle
+        exclude:
+          - color: green
+            shape: circle
     steps:
       - name: Dummy step
         run: |
