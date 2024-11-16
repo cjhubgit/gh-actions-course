@@ -52,7 +52,6 @@ jobs:
             opacity: 100
           - colour: red
             shape: triangle
-            size: medium
     steps:
       - name: Dummy step
         run: |
