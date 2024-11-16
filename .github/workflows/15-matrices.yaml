@@ -29,13 +29,12 @@ jobs:
       - name: Perform some tests
         run: | 
           echo "Running test on OS ${{ matrix.os }} and NodeJS ${{ matrix.node-version }}"
-          sleep 10
       - name: Upload test results
         run: echo "Uploading test results"
 
   include-example:
     runs-on: ubuntu-latest
-    name: ${{ matrix.colour }}-${{ matrix.shape }}-${{ matrix.size }}-${{ matrix.size}}-${{ matrix.opacity }}
+    name: ${{ matrix.colour }}-${{ matrix.shape }}-${{ matrix.size }}-${{ matrix.opacity }}
     strategy:
       matrix:
         colour: [red, green]
@@ -43,14 +42,14 @@ jobs:
         size: [small, large]
         include:
           - opacity: 50
-          - color: red
+          - colour: red
           - opacity: 75
           - shape: circle
             opacity: 100
           - colour: red
             shape: triangle
         exclude:
-          - color: green
+          - colour: green
             shape: circle
     steps:
       - name: Dummy step
