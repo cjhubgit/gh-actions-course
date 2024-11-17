@@ -47,10 +47,11 @@ jobs:
           - shape: circle
             opacity: 100
           - colour: red
-            shape: triangle
+            shape: circle
+            size: medium
         exclude:
           - colour: green
-            shape: circle
+            shap:e: circle
     steps:
       - name: Dummy step
         run: |
