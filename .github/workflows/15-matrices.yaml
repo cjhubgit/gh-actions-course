@@ -52,6 +52,7 @@ jobs:
         exclude:
           - colour: green
             shap:e: circle
+            size: large
     steps:
       - name: Dummy step
         run: |
