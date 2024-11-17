@@ -5,7 +5,6 @@ name: 16 - Working with Environments
           target-env:
             type: environment
             default: staging
-            run-name: 16 - Working with environments
     jobs:
       echo:
         runs-on: ubuntu-latest
