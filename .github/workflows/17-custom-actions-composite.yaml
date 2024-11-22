@@ -2,12 +2,15 @@ name: 17- Custom Actions - Composite
 on:
   workflow_dispatch:
 
+env:
+  working-directory: 17-custom-actions/react-app
+
 jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
-        run:
-            working-directory: ${{ env.working-directory }}
+      run:
+        working-directory: ${{ env.working-directory }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -16,11 +19,10 @@ jobs:
         uses: ./.github/actions/composite-cache-deps
         with:
           node-version: 20.x
-          working-dir: 17-custom-action/react-app
+          working-dir: 17-custom-actions/react-app
 
       - name: Test
         run: npm run test
-        working-directory: ${{ env.working-directory }} 
 
       - name: Build
         run: npm run build
