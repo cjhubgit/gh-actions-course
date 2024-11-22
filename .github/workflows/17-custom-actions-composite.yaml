@@ -15,11 +15,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Debug repository structure
+        run: ls -R .github/actions
+
       - name: Setup Node and NPM Dependencies
         uses: ./.github/actions/composite-cache-deps
         with:
           node-version: 20.x
-          working-dir: 17-custom-actions/react-app
+          working-dir: ${{ env.working-directory }}
 
       - name: Test
         run: npm run test
