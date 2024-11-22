@@ -1,4 +1,4 @@
-name: 05 - 1 - Events Filters and Activity Types 
+name: 05 - 2 - Events Filters and Activity Types 
 
 on: 
     pull_request:
