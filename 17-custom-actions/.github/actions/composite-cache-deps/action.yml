@@ -1,0 +1,29 @@
+name: Composite Cache Dependencies
+description: A composite action to cache dependencies
+inputs:
+  node-version:
+    description: "Node.js version to use"
+    required: true
+  working-dir:
+    description: "Working directory for the application"
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Cache dependencies
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: ${{ inputs.working-dir }}/node_modules
+        key: node-modules-${{ hashFiles('${{ inputs.working-dir }}/package-lock.json') }}
+
+    - name: Install dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
+      working-directory: ${{ inputs.working-dir }}
+
