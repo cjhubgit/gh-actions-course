@@ -1,0 +1,21 @@
+name: "Docker Ping URL"
+description: "Pings a URL using Docker"
+inputs:
+  url:
+    description: "The URL to ping"
+    required: true
+  max_trials:
+    description: "Number of times to retry"
+    required: false
+    default: 5
+  delays:
+    description: "Delay between retries (in seconds)"
+    required: false
+    default: 2
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.url }}
+    - ${{ inputs.max_trials }}
+    - ${{ inputs.delays }}

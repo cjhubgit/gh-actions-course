@@ -13,10 +13,7 @@ jobs:
         working-directory: ${{ env.working-directory }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Debug repository structure
-        run: ls -R .github/actions
+        uses: actions/checkout@v4
 
       - name: Setup Node and NPM Dependencies
         uses: ./.github/actions/composite-cache-deps
@@ -29,3 +26,4 @@ jobs:
 
       - name: Build
         run: npm run build
+

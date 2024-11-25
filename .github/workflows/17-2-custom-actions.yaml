@@ -1,15 +1,10 @@
-name: 17- 2 - Custom Actions - JS
-run-name: 17 - 2 - Custom Actions - JS
-
-on:
-  workflow_dispatch:
-
-jobs:
-  dependency-update:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Check for dependency updates
-        uses: ./.github/actions/js-dependency-update
+name: JS Dependency Update
+description: A custom JavaScript action for updating npm dependencies.
+inputs:
+  working-directory:
+    description: Directory where the npm project resides.
+    required: false
+    default: .
+runs:
+  using: node20
+  main: index.js
