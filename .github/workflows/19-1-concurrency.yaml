@@ -5,9 +5,9 @@ on:
 
 jobs:
   ping:
+    runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: ping URL
@@ -16,4 +16,4 @@ jobs:
         with:
           url: https://www.invalid-ubudnddndfks.com
           max_trials: 20
-          delays: 5 
+          delays: 5
