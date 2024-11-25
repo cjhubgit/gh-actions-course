@@ -1,12 +1,12 @@
-name: 19 - 1 - Managing Concurrency 
+name: 19 - 1 - Managing Concurrency
 
-on: 
-  workflow_dispatch: 
-  concurrency:
-    group: ${{ github.workflow }}-${{ github.ref }}       
+on:
+  workflow_dispatch:
 
 jobs:
   ping:
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
