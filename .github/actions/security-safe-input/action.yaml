@@ -1,0 +1,9 @@
+name: Security Safe Input
+description: Validates the PR title safely.
+inputs:
+  pr-title:
+    description: The title of the pull request.
+    required: true
+runs:
+  using: node20
+  main: index.js
