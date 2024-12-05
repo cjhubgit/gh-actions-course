@@ -1,0 +1,13 @@
+name: 18.3 - Reusable Workflows
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/18-1-reusable-workflow.yaml
+    with:
+      target-directory: dummy-dir
+
+  e2e-tests:
+    uses: cjhubgit/github-actions-course-example-e2e/.github/workflows/e2e.yaml@main
