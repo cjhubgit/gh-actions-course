@@ -1,22 +1,22 @@
-name: 20 - Workflow Security 
+name: 20 - Workflow Security
 
 on: 
-    pull_request: 
-
+  pull_request: 
 
 jobs:
-    unsafe-pre:
-        runs-on:ubuntu-latest
-        steps:
-            - name: checkout code
-              uses: actions/checkout@v4
-            - name: check PR title
-              run: | 
-              title=${{ github_event.pull_request.title}}
-              if  [[ $title =~ ^feat ]]; then 
-              echo "PR is a safe feature"
-              exit 0 
-              else
-              echo "PR is not a feature"
-              exit 1
-              finish 
+  unsafe-pre:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check PR title
+        run: |
+          title="${{ github.event.pull_request.title }}"
+          if [[ "$title" =~ ^feat ]]; then 
+            echo "PR is a safe feature"
+            exit 0
+          else
+            echo "PR is not a feature"
+            exit 1
+          fi
